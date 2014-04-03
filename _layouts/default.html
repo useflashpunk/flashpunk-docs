@@ -133,7 +133,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           {% capture package_name %}{{ page.categories | join: '.' }}{% endcapture %}
-          <h1 class="page-header">{% if package_name.length > 0 %}<small>{{ package_name }}</small>.{% endif %}{{ page.title }}</h1>
+          <h1 class="page-header">{% if {{ package_name | size }} > 0 %}<small>{{ package_name }}</small>.{% endif %}{{ page.title }}</h1>
           {{ content }}
         </div>
       </div>
