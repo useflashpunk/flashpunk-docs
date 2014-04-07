@@ -13,7 +13,7 @@ layout: default
   <tbody>
     {% assign classes = site.posts | sort: "title" %}
     {% for class in classes %}
-    {% if class.categories == page.categories %}
+    {% if class.categories == ['net', 'flashpunk'] %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
       <td>{{ class.description }}</td>
