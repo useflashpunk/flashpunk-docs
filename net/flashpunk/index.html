@@ -13,10 +13,12 @@ layout: default
   <tbody>
     {% assign classes = site.posts | sort: "title" %}
     {% for class in classes %}
+    {% if class.categories == page.categories %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
       <td>{{ class.description }}</td>
     </tr>
+    {% endif %}
     {% endfor %}
   </tbody>
 </table>
