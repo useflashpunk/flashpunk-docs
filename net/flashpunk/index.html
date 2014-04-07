@@ -16,7 +16,7 @@ layout: default
     {% if class.categories | join: '.' == 'net.flashpunk' %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
-      <td>{{ class.description }}</td>
+      <td>{{ class.categories | join: '.' }}</td>
     </tr>
     {% endif %}
     {% endfor %}
