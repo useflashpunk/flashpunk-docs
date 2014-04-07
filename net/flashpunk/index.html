@@ -7,14 +7,14 @@ layout: default
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description {{ page.categories }}</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     {% assign classes = site.posts | sort: "title" %}
     {% for class in classes %}
     {% assign package = class.categories | join: '.' %}
-    {% if package == "net.flashpunk" %}
+    {% if package == page.title %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
       <td>{{ package }}</td>
