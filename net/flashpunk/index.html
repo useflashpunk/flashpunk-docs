@@ -11,17 +11,12 @@ layout: default
     </tr>
   </thead>
   <tbody>
+    {% assign classes = site.posts | sort: "title" %}
+    {% for class in classes %}
     <tr>
-      <td>class one</td>
-      <td>description of class one</td>
+      <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
+      <td>{{ class.description }}</td>
     </tr>
-    <tr>
-      <td>class two</td>
-      <td>description of class two</td>
-    </tr>
-    <tr>
-      <td>class three</td>
-      <td>description of class three</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
