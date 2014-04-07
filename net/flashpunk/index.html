@@ -13,10 +13,11 @@ layout: default
   <tbody>
     {% assign classes = site.posts | sort: "title" %}
     {% for class in classes %}
-    {% if class.categories | join: '.' == 'net.flashpunk' %}
+    {% assign package = class.categories | join: '.' %}
+    {% if package == "net.flashpunk" %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
-      <td>{{ class.categories | join: '.' }}</td>
+      <td>{{ package }}</td>
     </tr>
     {% endif %}
     {% endfor %}
