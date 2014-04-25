@@ -188,7 +188,13 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           {% capture package_name %}{{ page.categories | join: '.' }}{% endcapture %}
-          <h1 class="page-header">{% unless package_name == '' %}<small>{{ package_name }}.</small>{% endunless %}{{ page.title }}</h1>
+          <div class="page-header">
+            <h1>{% unless package_name == '' %}<small>{{ package_name }}.</small>{% endunless %}{{ page.title }}</h1>
+            {% if page.subclass %}
+              {% capture subclassName %}{{ page.subclass | split: '.' | last}}{% endcapture %}
+              {% capture subclassURL %}{{ page.subclass | replace: '.', '/' }}{% endcapture %}
+              <h6>subclass of <a href="{{ site.baseurl}}/{{subclassURL }}.html">{{ subclassName }}</a></h6>{% endif %}
+          </div>
           {{ content }}
         </div>
       </div>
