@@ -1,8 +1,3 @@
----
-title: net.flashpunk
-layout: default
----
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,7 +12,7 @@ layout: default
     {% if package == page.title %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></td>
-      <td>{{ package }}</td>
+      <td>{{ class.excerpt | remove: '<p>' | remove: '</p>' }}</td>
     </tr>
     {% endif %}
     {% endfor %}

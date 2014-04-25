@@ -122,13 +122,67 @@
       </div>
     </div>
 
+    {% assign classes = site.posts | sort: "title" %}
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><a href="{{ site.baseurl}}/net/flashpunk/"><strong>net.flashpunk</strong></a></li>
-            {% for post in site.posts %}
-              <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/debug"><strong>net.flashpunk.debug</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.debug" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/graphics"><strong>net.flashpunk.graphics</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.graphics" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/masks"><strong>net.flashpunk.masks</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.masks" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/tweens/misc"><strong>net.flashpunk.tweens.misc</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.tweens.misc" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/tweens/motion"><strong>net.flashpunk.tweens.motion</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.tweens.motion" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/tweens/sound"><strong>net.flashpunk.tweens.sound</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.tweens.sound" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li><a href="{{ site.baseurl}}/net/flashpunk/utils"><strong>net.flashpunk.utils</strong></a></li>
+            {% for class in classes %}
+              {% assign package = class.categories | join: '.' %}
+              {% if package == "net.flashpunk.utils" %}
+                <li><a href="{{ site.baseurl }}{{ class.url }}">{{ class.title }}</a></li>
+              {% endif %}
             {% endfor %}
           </ul>
         </div>
