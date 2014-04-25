@@ -89,6 +89,18 @@
       .main .page-header {
         margin-top: 0;
       }
+
+      /*
+       * Property table
+       */
+      
+      .table .read-only {
+        color: #888;
+      }
+
+      .table .return strong {
+        color: #9c393c;
+      }
     </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -195,6 +207,61 @@
               {% capture subclassURL %}{{ page.subclass | replace: '.', '/' }}{% endcapture %}
               <h6>subclass of <a href="{{ site.baseurl}}/{{subclassURL }}.html">{{ subclassName }}</a></h6>{% endif %}
           </div>
+          <p>{{ page.description }}</p>
+          {% if page.properties %}
+            <h3>Properties</h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for prop in page.properties %}
+                   <tr class="{{ prop.access }}">
+                     <td><a href="#{{prop.name}}">{{ prop.name }}</a> : {{ prop.type }}{% if prop.default %} = {{ prop.default }}{% endif %}</td>
+                     <td>{% unless prop.access == 'public' or prop.access == null %}[{{ prop.access }}] {% endunless %}{{ prop.description }}</td>
+                   </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% endif %}
+          {% if page.methods %}
+            <h3>Methods</h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for method in page.methods %}
+                  <tr class="{{ method.access }}">
+                    <td><a href="#{{method.name}}">{{ method.name }}({% for arg in method.arguments %}{{ arg.name }}:{{ arg.type }}{% if arg.default %} = {{ arg.default }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %})</a> : {% if method.returns %}{{ method.returns }}{% else %}void{% endif %}</td>
+                    <td>{% unless method.access == 'public' or method.access == null %}[{{ method.access }}] {% endunless %}{{ method.description }}</td>
+                  </tr>
+                  {% if method.arguments %}
+                    {% for arg in method.arguments %}
+                      <tr>
+                        <td colspan="2">
+                          <small style="padding-left: 20px"><strong>{{ arg.name }} : {{ arg.type }}</strong><div style="display: inline-block; width: 10px"></div>{{ arg.description }}</small>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                  {% if method.returns %}
+                    <tr>
+                      <td colspan="2" class="return">
+                        <small style="padding-left: 20px"><strong>returns {{ method.returns }}</strong>{% if method.returnDescription %}<div style="display: inline-block; width: 10px"></div>{{ method.returnDescription }}{% endif %}</small>
+                      </td>
+                    </tr>
+                  {% endif %}                
+                {% endfor %}
+              </tbody>
+            </table>
+          {% endif %}
           {{ content }}
         </div>
       </div>
