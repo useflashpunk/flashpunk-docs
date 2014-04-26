@@ -202,10 +202,10 @@
           {% capture package_name %}{{ page.categories | join: '.' }}{% endcapture %}
           <div class="page-header">
             <h1>{% unless package_name == '' %}<small>{{ package_name }}.</small>{% endunless %}{{ page.title }}</h1>
-            {% if page.subclass %}
-              {% capture subclassName %}{{ page.subclass | split: '.' | last}}{% endcapture %}
-              {% capture subclassURL %}{{ page.subclass | replace: '.', '/' }}{% endcapture %}
-              <h6>subclass of <a href="{{ site.baseurl}}/{{subclassURL }}.html">{{ subclassName }}</a></h6>{% endif %}
+            {% if page.parent %}
+              {% capture parentName %}{{ page.parent | split: '.' | last}}{% endcapture %}
+              {% capture parentURL %}{{ page.parent | replace: '.', '/' }}{% endcapture %}
+              <h6>subclass of <a href="{{ site.baseurl}}/{{parentURL }}.html">{{ parentName }}</a></h6>{% endif %}
           </div>
           <p>{{ page.description }}</p>
           {% if page.properties %}
